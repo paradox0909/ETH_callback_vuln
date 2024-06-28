@@ -1,0 +1,14 @@
+FROM node
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+# 권한 문제 해결을 위해 --unsafe-perm 플래그 사용
+RUN npm install -g truffle ganache-cli --unsafe-perm
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
